@@ -1,1 +1,1 @@
-export const URI = 'http://apibitwanv1.tk/public'
+export const URI = 'https://apibitwanv1.tk/public'
