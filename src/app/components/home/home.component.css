@@ -1,0 +1,60 @@
+mat-form-field{
+    width: 100%;
+    
+}
+
+.example-card {
+    width: 60%;
+  }
+  
+  .example-header-image {
+    background-size: cover;
+    position: absolute;
+    left: 4px;
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .titleimg{
+    background-color: rgba(0,0,0,0.4);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    font-size: 1.3rem;
+    font-weight: 500;
+    height: 60px;
+    padding: 10px;
+    text-align: left;
+    opacity: 0;
+  }
+
+  .img{
+    background-color: rgba(0,0,0,0.4);
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    text-align: left;
+    opacity: 0;
+  }
+
+ 
+
+  .img:hover, .titleimg:hover{
+    
+    opacity:1;
+  }
+
+  #fichero{
+    display: none;
+  }
+
+  .ficheroOpen{
+    display: inline-block;
+  }
+
+  .iconPosition{
+    position: absolute;
+    left: 9px;
+    top: 8px;
+  }

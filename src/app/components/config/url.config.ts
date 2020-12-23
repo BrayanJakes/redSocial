@@ -1,0 +1,1 @@
+export const URI = 'http://apibitwanv1.tk/public'

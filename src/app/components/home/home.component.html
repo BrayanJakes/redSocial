@@ -1,0 +1,89 @@
+
+    <mat-form-field [formGroup]="form" appearance="outline">
+        <mat-label>¿Que publicaras hoy?</mat-label>
+        <textarea formControlName="posteo" style="resize: none;" rows="3" matInput></textarea>
+    </mat-form-field>
+
+<br>
+
+<div class="text-right">
+    <small *ngIf="loadingImg !== 0" style="position: absolute;
+    right: 170px;
+    top: 135px;">{{loadingImg}}%</small>
+    <mat-spinner 
+    *ngIf="loadingImg !== 0"
+    style="position: absolute; right: 160px;"
+    mode="determinate"
+    [value]="loadingImg"
+    diameter="40" ></mat-spinner>
+            <input id="fichero"
+                  type="file"
+                  style="display: none"
+                  (change)="fileInput($event)"
+                />
+                
+                <button mat-icon-button class="btn-primary">
+                    <label for="fichero" class="ficheroOpen">
+                    <mat-icon class="iconPosition">add_photo_alternate</mat-icon>
+                </label>
+                </button>
+    
+    &nbsp;
+    <button mat-raised-button
+    class="btn-primary"
+    (click)="publicar()"
+    [disabled]="form.invalid"
+    > Publicar </button>
+</div>
+
+<hr>
+
+<div class="aling">
+
+      <mat-card *ngFor="let post of posts"
+       
+        class="example-card mt-3" style="padding-top: 0px; padding-bottom: 0px;">
+              <span mat-card-avatar class="example-header-image" 
+              [style]="post.userimage"></span>
+              <span class="text-white titleimg">
+               <span mat-card-avatar style="top: 0px;"
+               [style]="post.userimage"
+               class="example-header-image"></span>
+               <span style="left: 60px;
+               position: relative;
+               top: 10px;">{{post.usernickname}}</span>
+
+               <span style="position: absolute;
+               right: 0px;">
+                <button (click)="editPost(post)" mat-icon-button >
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button (click)="eliminarPost(post)" mat-icon-button >
+                    <mat-icon>delete</mat-icon>
+                </button>
+               </span>
+                  
+            </span>
+            <img mat-card-image 
+            style="padding-bottom: 0px;
+            margin-bottom: 0px;
+            "
+            [src]="post.image ? post.image : './assets/sinImg.png'" >
+            
+            <div class="img text-white" >
+                <p style="font-size: 1.1rem;" class="mt-2 ml-1">
+                    {{post.description}}
+                  </p>
+                <button (click)="like(post)" mat-icon-button >
+                    <mat-icon>thumb_up_alt</mat-icon> 
+                </button>
+                <span
+                    matTooltip="A ti te gusta esto"
+                    *ngIf="post.likes !== '[]'" >(1)</span>
+                &nbsp;
+                <button (click)="comentar(post)" mat-icon-button >
+                    <mat-icon>comment</mat-icon>  
+                </button> <span style="cursor: pointer;" (click)="comentar(post)">({{post.comentarios?.length}})</span>
+            </div>
+          </mat-card>
+</div>

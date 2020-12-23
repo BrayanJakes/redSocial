@@ -1,0 +1,73 @@
+<div *ngIf="data.option === 'Editar'">
+    <h3>Edita la descripcion de tu publicacion</h3>
+<mat-form-field [formGroup]="form" appearance="outline">
+    <mat-label>¿Que cambio haras?</mat-label>
+    <textarea formControlName="posteo" style="resize: none;" rows="3" matInput></textarea>
+</mat-form-field>
+<br>
+<div class=" text-right">
+    <button mat-raised-button
+    class="btn-light"
+    (click)="modalRef.dismiss('Sin cambios')"
+    > Cancelar </button>
+    &nbsp; &nbsp;
+<button mat-raised-button
+    class="btn-primary"
+    (click)="modalRef.dismiss(form.controls['posteo'].value)"
+    [disabled]="form.invalid"
+    > Publicar </button>
+</div>
+</div>
+
+<div *ngIf="data.option === 'Eliminar'">
+    <h3>Estas seguro que quiere eliminar este post?</h3>
+    <br>
+    <div class=" text-right">
+        <button mat-raised-button
+        class="btn-light"
+        (click)="modalRef.dismiss('Sin cambios')"
+        > Cancelar </button>
+        &nbsp; &nbsp;
+    <button mat-raised-button
+        class="btn-danger"
+        (click)="modalRef.dismiss(data.description)"
+        > Eliminar </button>
+</div>
+</div>
+
+
+<div *ngIf="data.option === 'Comentar'">
+    <div *ngIf="comentarios.length > 0">
+        <h3 *ngFor="let comment of comentarios"> <strong>@{{comment.usernickname}}:</strong>  {{comment.description}} 
+            <button style="right: 0px;
+            position: absolute;"
+            *ngIf="comment.iduser == idUser"
+             matTooltip="Eliminar comentario"
+             (click)="deleteComment(comment)"
+            mat-icon-button >
+            <mat-icon>delete</mat-icon>
+        </button></h3>
+    </div>
+
+    <div *ngIf="comentarios.length === 0">
+        <h3> Se el primero en comentar</h3>
+    </div>
+<mat-form-field [formGroup]="form" appearance="outline">
+    <mat-label>¿Que te gustaria escribir?</mat-label>
+    <textarea formControlName="posteo" style="resize: none;" rows="3" matInput></textarea>
+</mat-form-field>
+<br>
+<div class=" text-right">
+    <button mat-raised-button
+    class="btn-light"
+    (click)="modalRef.dismiss('Sin cambios')"
+    > Cancelar </button>
+    &nbsp; &nbsp;
+<button mat-raised-button
+    class="btn-primary"
+    (click)="modalRef.dismiss(form.controls['posteo'].value)"
+    [disabled]="form.invalid"
+    > Comentar </button>
+</div>
+</div>
+

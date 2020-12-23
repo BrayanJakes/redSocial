@@ -1,0 +1,21 @@
+mat-form-field{
+    width: 50%;
+}
+
+#fichero{
+    display: none;
+  }
+
+  .ficheroOpen{
+    display: inline-block;
+  }
+
+  .iconPosition{
+    position: absolute;
+    left: 9px;
+    top: 8px;
+  }
+
+  .img{
+      object-fit: cover;
+  }

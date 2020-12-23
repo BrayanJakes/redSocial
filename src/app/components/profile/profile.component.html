@@ -1,0 +1,54 @@
+<div class="container aling">
+    <img 
+            style="width: 200px; height: 200px;"
+            [src]="!img ? './assets/sinImg.png' : img"
+            class=" rounded-circle img"
+            >
+            <input id="fichero"
+                  type="file"
+                  style="display: none"
+                  (change)="fileInput($event)"
+                />
+                
+                <button mat-icon-button class="btn-primary" style="position: absolute;
+                top: 170px;
+                left: 500px;">
+                    <label for="fichero" class="ficheroOpen">
+                    <mat-icon class="iconPosition">add_photo_alternate</mat-icon>
+                </label>
+                </button>
+            <br>
+                <br>
+            <form [formGroup]="form" autocomplete="off">
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre completo:</mat-label>
+                    <input matInput type="text" formControlName="fullname" placeholder="Ingrese tu nombre completo">
+                    <mat-icon matSuffix>person</mat-icon>
+                </mat-form-field>
+                <br>
+                <mat-form-field  appearance="outline">
+                    <mat-label>Email:</mat-label>
+                    <input matInput  formControlName="email" placeholder="Ingrese su email">
+                    <mat-icon matSuffix>email</mat-icon>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nickname:</mat-label>
+                    <input matInput formControlName="nickname" placeholder="Ingrese su nick">
+                    <mat-icon matSuffix>person</mat-icon>
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="outline">
+                        <mat-label>Fecha de nacimiento:</mat-label>
+                        <input matInput formControlName="birthdate" [matDatepicker]="picker">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker ></mat-datepicker>
+                </mat-form-field>
+                <br>
+                <button mat-raised-button
+                class="btn-primary"
+                [disabled]="!form.valid"
+                (click)="guardar()"
+                > Guardar cambios </button>
+            </form>
+</div>
